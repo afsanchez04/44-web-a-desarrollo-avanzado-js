@@ -1,0 +1,19 @@
+{
+  "results": [
+    {
+      "titulo": "Avatar",
+      "year": 2025,
+      "director": "James Cameron"
+    },
+    {
+      "titulo": "Back to the future",
+      "year": 1985,
+      "director": "Robert"
+    },
+    {
+      "titulo": "Star Wars I",
+      "year": 1980,
+      "director": "James"
+    }
+  ]
+}

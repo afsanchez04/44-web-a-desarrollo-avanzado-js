@@ -89,11 +89,14 @@ ejecutarTareas () */
 
 //Ejemplo final con API
 
-async function obtenerNaves () {
+/* async function obtenerNaves () {
   const results = await fetch("https://swapi.dev/api/planets")
   const data = await results.json()
+  console.log(data)
   return data.results
 }
+
+obtenerNaves ()
 
 async function mostrarInfo () {
   const naves = await obtenerNaves()
@@ -101,6 +104,19 @@ async function mostrarInfo () {
   naves.map( ship => {
     console.log(`Nombre: ${ship.name}, Órbita: ${ship.gravity} `)
   } )
-}
+} */
 
-mostrarInfo ()
+//mostrarInfo ()
+
+
+const jsonData = '{"titulo": "Star Wars I","year": 1980,"director": ["pepe","carlos"]}'
+
+const objeto = JSON.parse(jsonData) //Parsear a javascript información que llega en formato json
+
+console.log( objeto.titulo )
+console.log( objeto.year )
+
+//Enviar información al localstorage
+
+localStorage.setItem( "peliculaVista", JSON.stringify( objeto ) )
+
