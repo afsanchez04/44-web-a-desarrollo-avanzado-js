@@ -2,8 +2,8 @@
 //https://swapi.dev/api/starships/9/
 
 /* fetch("https://swapi.dev/api/starships/9/")
-  .then( res => { 
-    console.log( res.ok ) //True o false 
+  .then( res => {
+    console.log( res.ok ) //True o false
     console.log( res.status ) //200, 404, 500
     if( !res.ok ){
       throw new Error ( `Error HTTP. Status: ${res.status}` )
@@ -15,7 +15,7 @@
   .then( data => {
     console.log(data)
   })
-  .catch( error => { console.error( error ) }) 
+  .catch( error => { console.error( error ) })
   .finally( () => { console.log("Esto se ejecuta independientemente de la promesa fetch") } ) */
 
 /* fetch("https://jsonplaceholder.typicode.com/posts",{
@@ -36,7 +36,7 @@
 
 //Ejemplo de buscador de personajes con fetch
 
-const inputBusqueda = document.getElementById("busqueda")
+/* const inputBusqueda = document.getElementById("busqueda")
 const btnBuscar = document.getElementById("btnBuscar")
 const resultado = document.getElementById("resultado")
 
@@ -49,7 +49,7 @@ async function buscarPersonaje ( nombre ) {
     const respuesta = await fetch(`https://rickandmortyapi.com/api/character/?name=${nombre}`)
 
     if( !respuesta.ok ){
-      throw new Error ("Personaje no encontrado") 
+      throw new Error ("Personaje no encontrado")
     }
 
     const data = await respuesta.json()
@@ -63,7 +63,7 @@ async function buscarPersonaje ( nombre ) {
       <p>Status: ${personaje.status}</p>
     </div>
     `
-    
+
   } catch (error) {
     resultado.innerHTML = `Personaje no encontrado en la biblioteca ❎`
     console.log(error)
@@ -91,5 +91,57 @@ inputBusqueda.addEventListener("keydown", (event) => {
     btnBuscar.click()
   }
 
-})
+}) */
 
+//----------------------------------------------//
+
+//Axios
+
+//Ejemplo sin async await
+
+/* axios.get("https://jsonplaceholder.typicode.com/posts")
+    .then( response => {
+      console.log(response.data)
+    } )
+    .catch( error => {
+      console.log("Error al mostrar los datos:",error)
+    } )
+ */
+
+
+//Ejemplo con async await
+/* async function mostrarPosts() {
+
+  try {
+    const respuesta = await axios.get("https://jsonplaceholder.typicode.com/posts")
+    console.log(respuesta.data)
+  } catch (error) {
+    console.error(error)
+  }
+
+}
+
+mostrarPosts() */
+
+
+//Petición de tipo POST con axios y async await
+
+const baseURL = "https://jsonplaceholder.typicode.com/posts" 
+
+async function enviarDatos(data) {
+
+  try {
+
+    const respuesta = await axios.post(baseURL, data)
+    console.log(respuesta.data)
+
+  } catch (error) {
+    console.error("Error al enviar la solicitud", error)
+  }
+
+}
+
+enviarDatos({
+  nombre: "Carlos",
+  correo: "carlos@correo.com"
+})
