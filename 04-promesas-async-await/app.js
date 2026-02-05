@@ -1,4 +1,3 @@
-
 //Ejemplo 1 promesas: tienda de hamburguesas
 
 /* let tiendaAbierta = true;
@@ -37,11 +36,10 @@ pedido( 3000, () => console.log("Ingredientes reunidos correctamente") )
   console.log("Jornada finalizada. La tienda ha cerrado")
 } ) */
 
-
 //Ejemplo 2 promesas: Registro de usuarios
 
 //Creación de funciones
-function registrarUsuario( nombre ){
+/* function registrarUsuario( nombre ){
   return new Promise( (resolve, reject) => {
 
     setTimeout( () => {
@@ -55,9 +53,9 @@ function registrarUsuario( nombre ){
     }, 1500 )
 
   } )
-}
+} */
 
-function enviarCorreoBienvenida( nombre ){
+/* function enviarCorreoBienvenida( nombre ){
 
   return new Promise( (resolve) => {
     setTimeout( () => {
@@ -65,10 +63,11 @@ function enviarCorreoBienvenida( nombre ){
     }, 3500 )
   } )
 
-}
+} */
 
 //Manejo del formulario
-const form = document.getElementById("registroForm")
+
+/* const form = document.getElementById("registroForm")
 const mensaje = document.getElementById("mensaje")
 
 form.addEventListener("submit", (event) => {
@@ -99,4 +98,35 @@ form.addEventListener("submit", (event) => {
   } )
 
 
-})
+}) */
+
+//Ejemplo chef hamburguesas async await
+
+let isOpen = true;
+
+let eleccion_salsas = () => {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve(console.log("Qué salsas quieres?"));
+    }, 4000);
+  });
+};
+
+let cocina = async () => {
+
+  console.log("A")
+  console.log("B")
+  console.log("C")
+
+  await eleccion_salsas()
+
+  console.log("D")
+  console.log("E")
+
+}
+
+cocina()
+
+console.log("Lavando platos")
+console.log("Limpiando las mesas")
+console.log("Registro de nuevas órdenes")
