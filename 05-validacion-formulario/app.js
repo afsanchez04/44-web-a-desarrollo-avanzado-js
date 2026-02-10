@@ -7,9 +7,26 @@ form.addEventListener("submit", (event) => {
   const email = document.getElementById("email").value;
   const password = document.getElementById("password").value;
   const errorEmail = document.getElementById("errorEmail");
+  const selectColors = document.getElementsByName("colores");
   const specialCharRegex2 = /[^\w\s]/;
   const specialCharRegex = /[!@#$%^&*(),.?":{}|<>]/;
 
+  /*   const userColors =  Array.from(selectColors).map( color => {
+    if(color.checked){
+      return color.value 
+    }
+  } )  */
+
+  /* const userColors =  Array.from(selectColors).filter( color => color.checked === true ) */
+
+  const userColors = [];
+
+  selectColors.forEach((color) => {
+    //console.log(color.value, color.checked)
+    if (color.checked) {
+      userColors.push(color.value);
+    }
+  });
 
   if (!name || !email || !password) {
     errorEmail.textContent = "Please fill in all fields.";
@@ -35,6 +52,7 @@ form.addEventListener("submit", (event) => {
     name,
     email,
     password,
+    colores: userColors,
   };
 
   errorEmail.textContent = "";
