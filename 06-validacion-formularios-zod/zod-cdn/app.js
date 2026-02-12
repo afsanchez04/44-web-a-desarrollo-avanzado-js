@@ -71,10 +71,29 @@ usersSchema.parse([
 ]); */
 
 //Crear el schema
+const userSchema = zod.object( {
+  name: zod.string().min(1,"Nombre obligatorio"),
+  email: zod.string().email({error: "El correo no es válido"}),
+  age: zod.number().int().positive("La edad debe ser un número positivo")
+} )
 
 document.getElementById("userForm").addEventListener("submit", (e) => {
   e.preventDefault()
 
-  //Validar la información con schema creado
+  const formData = {
+    name: document.getElementById("name").value,
+    email: document.getElementById("email").value,
+    age: Number( document.getElementById("age").value )
+  }
 
-})
+  //Validar la información con schema creado
+  try {
+    userSchema.parse(formData)
+    alert("Formulario enviado con éxito")
+  } catch (error) {
+    //const msj = error.map( e => e.message ).join(", ")
+    console.log(`Error: ${error} `)
+    console.log(`Error: ${error.message} `) //Pendiente mostrar mensaje de error personalizado
+  }
+
+})  
