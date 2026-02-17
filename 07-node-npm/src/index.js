@@ -1,5 +1,24 @@
 
-import http from "node:http"
+import express from 'express'
+
+const app = express()
+const PORT = 3000
+
+app.get('/', (req, res) => {
+  res.send('Hello World')
+})
+app.get('/data', (req, res) => {
+  res.send({
+    nombre: "rick",
+    age: 60
+  })
+})
+
+app.listen(PORT, () => {
+  console.log('Server is running on http://localhost:3000')
+})
+
+/* import http from "node:http"
 
 const hostname = '127.0.0.1';
 const port = 3000;
@@ -12,7 +31,7 @@ const server = http.createServer( (req, res) => {
 
 server.listen(port, hostname, () => {
   console.log(`Servidor ejecutandose en: http://${hostname}:${port}`) //http://127.0.0.1:3000
-})
+}) */
 
 
 //Ejemplo de zod con node
