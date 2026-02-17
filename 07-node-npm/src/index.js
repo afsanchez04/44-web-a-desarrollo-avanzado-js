@@ -1,6 +1,22 @@
 
+import http from "node:http"
+
+const hostname = '127.0.0.1';
+const port = 3000;
+
+const server = http.createServer( (req, res) => {
+  res.statusCode = 200
+  res.setHeader('Content-Type', 'text/plain')
+  res.end("Hola mundo desde Node.js")
+} )
+
+server.listen(port, hostname, () => {
+  console.log(`Servidor ejecutandose en: http://${hostname}:${port}`) //http://127.0.0.1:3000
+})
+
+
 //Ejemplo de zod con node
-import { z } from "zod"
+/* import { z } from "zod"
 
 const schema = z.object({
   name: z.string().min(1, "El nombre es obligatorio"),
@@ -12,7 +28,7 @@ try {
   console.log("Datos válidos")
 } catch (error) {
   console.error(error)
-}
+} */
 
 
 
